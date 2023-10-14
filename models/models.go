@@ -14,7 +14,6 @@ type Category struct {
 	Description  string `db:"description" json:"description"`
 	Picture      []byte         `db:"picture" json:"picture"`
 }
-
 type Customer struct {
 	CustomerID   string         `db:"customer_id" json:"customerId"`
 	CompanyName  string `db:"company_name" json:"companyName"`

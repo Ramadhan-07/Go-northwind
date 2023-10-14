@@ -2,7 +2,7 @@
 // versions:
 //   sqlc v1.19.0
 
-package models
+package gen
 
 import (
 	"database/sql"
@@ -10,8 +10,8 @@ import (
 
 type Category struct {
 	CategoryID   int16          `db:"category_id" json:"categoryId"`
-	CategoryName sql.NullString `db:"category_name" json:"categoryName"`
-	Description  sql.NullString `db:"description" json:"description"`
+	CategoryName string `db:"category_name" json:"categoryName"`
+	Description  string `db:"description" json:"description"`
 	Picture      []byte         `db:"picture" json:"picture"`
 }
 

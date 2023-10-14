@@ -1,12 +1,10 @@
 package main
 
 import (
-	"context"
 	"log"
 	"os"
 
 	"codeid.northwind/config"
-	"codeid.northwind/repositories"
 	"codeid.northwind/server"
 	_ "github.com/lib/pq"
 )
@@ -29,10 +27,15 @@ func main() {
 
 	log.Println("Initializing database")
 	dbHandler := server.InitDatabase(config)
-	log.Println(dbHandler)
+	// log.Println(dbHandler)
+
+	log.Println("Initializing HTTP Server")
+	httpServer := server.InitHttpServer(config, dbHandler) 
+
+	httpServer.Start()
 
 	//test insert to category
-	ctx := context.Background()   // create goroutine
+	/* ctx := context.Background()   // create goroutine
 	queries := repositories.New(dbHandler)
 
 	newCategory, err := queries.CreateCategory(ctx, 
@@ -47,5 +50,5 @@ func main() {
 	if err != nil{
 		log.Fatal("Eror : ", err)
 	}
-	log.Println(newCategory)
+	log.Println(newCategory) */
 }
